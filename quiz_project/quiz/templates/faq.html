@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+
+{% block title %}FAQ - EduVide{% endblock %}
+
+{% block content %}
+<style>
+    /* 🌍 Global Styles */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #6A0DAD, #B800E6, #7000FF, #0038A8);
+        color: white;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 📜 FAQ Section */
+    .faq-container {
+        padding: 50px 15px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* 📜 FAQ Header */
+    .faq-container h2 {
+        color: white;
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    /* 📖 FAQ Items */
+    .faq-item {
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 10px;
+        color: white;
+        padding: 20px;
+        margin-bottom: 15px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .faq-item h4 {
+        color: #FF00FF;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .faq-item p {
+        color: #ddd;
+        font-size: 1.1rem;
+    }
+
+    .faq-item a {
+        color: #B800E6;
+        text-decoration: none;
+    }
+
+    .faq-item a:hover {
+        text-decoration: underline;
+    }
+
+    /* 📩 FAQ Form */
+    .faq-form-container {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        margin-top: 30px;
+    }
+
+    .faq-form-container h4 {
+        color: #FF00FF;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .faq-form-container .form-label {
+        color: white;
+        font-size: 1.1rem;
+    }
+
+    .faq-form-container .form-control {
+        background-color: rgba(255, 255, 255, 0.2);
+        border: 1px solid #ddd;
+        color: white;
+        font-size: 1.1rem;
+    }
+
+    .faq-form-container .form-control:focus {
+        border-color: #B800E6;
+        box-shadow: 0 0 10px rgba(184, 0, 230, 0.5);
+    }
+
+    .faq-form-container .btn-primary {
+        background: linear-gradient(45deg, #B800E6, #7000FF);
+        border: none;
+        color: white;
+        font-weight: bold;
+        transition: all 0.3s ease-in-out;
+        padding: 10px 20px;
+        font-size: 1.1rem;
+    }
+
+    .faq-form-container .btn-primary:hover {
+        background: linear-gradient(45deg, #7000FF, #B800E6);
+        transform: scale(1.05);
+    }
+
+    /* 📱 Responsiveness */
+    @media (max-width: 768px) {
+        .faq-container {
+            padding: 20px;
+        }
+        .faq-container h2 {
+            font-size: 2rem;
+        }
+        .faq-item h4 {
+            font-size: 1.3rem;
+        }
+        .faq-item p {
+            font-size: 1rem;
+        }
+        .faq-form-container .form-label,
+        .faq-form-container .form-control {
+            font-size: 1rem;
+        }
+        .faq-form-container .btn-primary {
+            font-size: 1rem;
+            padding: 8px 16px;
+        }
+    }
+</style>
+
+<div class="faq-container">
+    <h2>Frequently Asked Questions</h2>
+
+    <!-- FAQ Items -->
+    <div class="faq-item">
+        <h4>What is the purpose of this project?</h4>
+        <p>This project is designed to provide an engaging EduVide for learning purposes. It includes various quizzes to test knowledge and improve learning outcomes.</p>
+    </div>
+
+    <div class="faq-item">
+        <h4>How can I participate in the quizzes?</h4>
+        <p>Simply sign up, log in, and navigate to the quiz section where you can start answering the quizzes.</p>
+    </div>
+
+    <div class="faq-item">
+        <h4>How can I track my progress?</h4>
+        <p>Your progress is automatically saved after each quiz, and you can track your performance from the dashboard.</p>
+    </div>
+
+    <div class="faq-item">
+        <h4>How can I create new quizzes?</h4>
+        <p>Only admins can create new quizzes. If you're an admin, you can access the admin panel and manage quizzes there.</p>
+    </div>
+
+    <!-- FAQ Form to Submit New FAQ -->
+    <div class="faq-form-container">
+        <h4>Create a New FAQ</h4>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="question" class="form-label">Question</label>
+                <input type="text" class="form-control" name="question" required>
+            </div>
+            <div class="mb-3">
+                <label for="answer" class="form-label">Answer</label>
+                <textarea class="form-control" name="answer" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Save FAQ</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

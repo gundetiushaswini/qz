@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}Register - EduVibe{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card border-0 shadow-lg animate__animated animate__fadeIn">
+                <div class="card-body p-5">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bold mb-3">Create an Account</h2>
+                        <p class="text-muted">Join us and start learning today</p>
+                    </div>
+
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} animate__animated animate__fadeIn">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <form method="post" action="{% url 'register' %}">
+                        {% csrf_token %}
+
+                        <!-- Username Field -->
+                        <div class="mb-4">
+                            <label for="username" class="form-label">Username</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" name="username" id="username"
+                                    class="form-control form-control-lg"
+                                    placeholder="Choose a username" required autocomplete="off">
+                            </div>
+                        </div>
+
+                        <!-- Password Field -->
+                        <div class="mb-4">
+                            <label for="password" class="form-label">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" name="password" id="password"
+                                    class="form-control form-control-lg"
+                                    placeholder="Create a password" required autocomplete="new-password"
+                                    pattern=".{6,}" title="Password must be at least 6 characters">
+                            </div>
+                        </div>
+
+                        <!-- Full Name Field -->
+                        <div class="mb-4">
+                            <label for="name" class="form-label">Full Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                <input type="text" name="name" id="name"
+                                    class="form-control form-control-lg"
+                                    placeholder="Enter your full name" required autocomplete="name">
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid mb-4">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-user-plus me-2"></i>Register
+                            </button>
+                        </div>
+
+                        <!-- Login Link -->
+                        <div class="text-center">
+                            <p class="text-muted mb-0">Already have an account?</p>
+                            <a href="{% url 'login' %}" class="fw-bold text-primary">Login here</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 1rem;
+    }
+
+    .input-group-text {
+        background-color: var(--light-bg);
+        border: none;
+    }
+
+    .form-control {
+        border-left: none;
+    }
+
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #dee2e6;
+    }
+
+    /* Set muted text color to white */
+    .text-muted {
+        color: white !important;
+    }
+
+    /* Set register link color */
+    .fw-bold.text-primary {
+        color: #FF3B8B !important;
+    }
+</style>
+
+{% endblock %}

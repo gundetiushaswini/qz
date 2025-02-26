@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block title %}About Us | EduVibe{% endblock %}
+
+{% block content %}
+<style>
+/* 🌍 Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #6A0DAD, #B800E6, #7000FF, #0038A8);
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* 📜 About Section */
+.about-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* 📌 Card Styles */
+.card {
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white; /* Ensures card text remains white */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.card-body {
+    padding: 20px;
+    color: white; /* Ensures text inside card body remains white */
+}
+
+/* 📌 Info Box */
+.info-box {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    color: white; /* Ensures text in the info box is white */
+}
+
+/* 🌟 Why Choose Us? Stats */
+.stats-box {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    text-align: center;
+    color: white; /* Ensures all #ffffff text in stats box is white */
+}
+
+.stats-box h3 {
+    color: whiteF; /* Ensures stat numbers are pink */
+}
+
+.stats-box p {
+    color: white; /* Ensures stat descriptions are white */
+}
+
+/* 🔥 Buttons */
+.btn-primary {
+    background: linear-gradient(45deg, #B800E6, #7000FF);
+    border: none;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #7000FF, #B800E6);
+    transform: scale(1.05);
+}
+
+/* Ensure all paragraphs in .about-section and card bodies are white */
+.about-section p, .card-body p {
+    color: white !important;
+}
+
+/* 💬 Ensure text in the info box and stats is in white */
+.info-box, .stats-box {
+    color: white;
+}
+
+/* 🌐 Ensure 'Empowering learners' message stays in white */
+.about-section p {
+    color: white;
+}
+
+/* Table Text */
+table, th, td {
+    color: white !important;  /* Ensures text is white in table */
+}
+
+/* Styling for the stats text inside table */
+table h3 {
+    color: #FF00FF !important; /*    Ensures stats like 500K+, 99%, and 24/7 are pink */
+}
+
+table p {
+    color: white !important;  /* Ensures text below stats in the table is white */
+}
+</style>
+
+<!-- About Section -->
+<section class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold mb-4">About EduVibe</h1>
+        <p class="lead text-muted">Empowering learners through intelligent assessment and analytics.</p>
+    </div>
+
+    <div class="row g-4">
+        <!-- Our Mission -->
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                    <h3 class="fw-bold mb-4">Our Mission</h3>
+                    <p class="text-muted">
+                        At EduVibe, we empower learners with AI-driven, personalized skill assessments
+                        designed to unlock their full potential. Our platform provides data-driven insights to identify strengths,
+                        bridge knowledge gaps, and accelerate career growth with precision.
+                    </p>
+                    <ul class="list-unstyled">
+                        <li class="d-flex align-items-center mb-3">
+                            <i class="fas fa-check-circle text-primary me-2"></i> Smart, AI-powered evaluations for accurate skill measurement
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                            <i class="fas fa-check-circle text-primary me-2"></i> Tailored learning paths for continuous improvement
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <i class="fas fa-check-circle text-primary me-2"></i> Real-time insights to track progress and success
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Choose Us -->
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                    <h3 class="fw-bold mb-4">Why Choose Us?</h3>
+                    <!-- Added Table for stats -->
+                    <table class="table table-borderless text-center">
+                        <tbody>
+                            <tr>
+                                <td><h3 class="fw-bold text-primary">500K+</h3></td>
+                                <td><h3 class="fw-bold text-primary">99%</h3></td>
+                                <td><h3 class="fw-bold text-primary">24/7</h3></td>
+                            </tr>
+                            <tr>
+                                <td><p class="text-muted">Tests Conducted</p></td>
+                                <td><p class="text-muted">User Satisfaction</p></td>
+                                <td><p class="text-muted">Support Availability</p></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="text-muted mt-4">
+                        Our platform ensures **real-time progress tracking**, personalized analytics, and AI-driven skill gap analysis.
+                    </p>
+                    <a href="/contact" class="btn btn-primary">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

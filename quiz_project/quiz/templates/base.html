@@ -1,0 +1,181 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'quiz/images/EDUVIBE.JPG' %}">
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduVibe</title>
+
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'quiz/styles.css' %}">
+    <style>
+        /* 🌍 Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6A0DAD, #B800E6, #7000FF, #0038A8);
+            color: white; /* Default text color */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 📌 Navbar Styles */
+        .navbar {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar-brand:hover {
+            color: #B800E6;
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            color: #B800E6;
+        }
+
+        .navbar-toggler-icon {
+            background-color: white;
+        }
+
+        /* 📌 Main Content */
+        .container {
+            margin-top: 30px;
+        }
+
+        h1, h2 {
+            color: white; /* Headings color set to blue */
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        /* 📌 Card Styles for Equal Size */
+        .card {
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            color: white;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        /* 📌 Footer Styles */
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 0;
+            margin-top: 200px; /* Increased margin-top to push footer further down */
+            color: white; /* Footer text color set to white */
+            font-size: 0.7rem; /* Smaller font size for footer text */
+            text-align: center;
+        }
+
+        footer a {
+            color: #B800E6;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer p {
+            font-size: 0.7rem; /* Smaller font size for footer text */
+            margin-top: 20px;
+        }
+
+        /* 📌 Question Text */
+        .question-text {
+            color: white; /* Set question text to white */
+        }
+
+        /* 📱 Responsiveness */
+        @media (max-width: 768px) {
+            h1, h2 {
+                font-size: 2rem;
+            }
+            .navbar-nav .nav-item .nav-link {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'home' %}">EduVibe</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'home' %}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'leaderboard' %}">Leaderboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'about' %}">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login/">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/register/">Register</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <a href="{% url 'contact' %}">Contact</a>    |
+            <a href="{% url 'terms_conditions' %}">Terms and Conditions</a>     |
+            <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
+            <p>&copy; 2023 EduVibe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

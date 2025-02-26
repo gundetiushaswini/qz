@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %}Leaderboard | Quiz{% endblock %}
+
+{% block content %}
+
+<style>
+/* 🌍 Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #6A0DAD, #B800E6, #7000FF, #0038A8);
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* 🏆 Leaderboard Section */
+.leaderboard-container {
+    max-width: 900px;
+    margin: 50px auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 35px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    text-align: center;
+}
+
+/* ✨ Leaderboard Heading */
+.leaderboard-container h1 {
+    font-size: 34px;
+    font-weight: bold;
+    background: linear-gradient(45deg, #FF00FF, #7000FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 📋 Table Styling */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: center;
+    color: #f5f5f5;
+    border-bottom: 1px solid #333;
+}
+
+table th {
+    background: linear-gradient(45deg, #FF00FF, #7000FF);
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+table tr:nth-child(even), table tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+table tr:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* 🎨 Button Styling */
+.btn-primary {
+    display: inline-block;
+    margin-top: 25px;
+    background: linear-gradient(45deg, #B800E6, #7000FF);
+    border: none;
+    font-weight: bold;
+    padding: 12px 22px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    color: white;
+    box-shadow: 0px 4px 10px rgba(255, 0, 255, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #7000FF, #B800E6);
+    transform: scale(1.07);
+    box-shadow: 0px 6px 15px rgba(255, 0, 255, 0.5);
+}
+</style>
+
+<div class="leaderboard-container">
+    <h1 class="text-center">🏆 Leaderboard</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Username</th>
+                <th>Category</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for score in scores %}
+            <tr class="{% if forloop.counter == 1 %}rank-1{% elif forloop.counter == 2 %}rank-2{% elif forloop.counter == 3 %}rank-3{% endif %}">
+                <td>{{ forloop.counter }}</td>
+                <td>{{ score.user.username }}</td>
+                <td>{{ score.category.name }}</td>
+                <td>{{ score.score }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'home' %}" class="btn btn-primary">Back to Home</a>
+</div>
+
+{% endblock %}

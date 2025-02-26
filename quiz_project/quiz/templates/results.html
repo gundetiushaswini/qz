@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mb-4">{{ category.name }} Results</h1>
+    <div class="card mb-4">
+        <div class="card-body text-center">
+            <h5 class="card-title">Your Score</h5>
+            <p class="card-text">{{ score }} out of {{ total }}</p>
+        </div>
+    </div>
+    <a href="{% url 'home' %}" class="btn btn-primary btn-block">Back to Home</a>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mb-4">Welcome to EduVibe</h1>
+    {% if user.is_authenticated %}
+    <div class="row">
+        {% for category in categories %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ category.name }}</h5>
+                    <p class="card-text">{{ category.description|default:"No description available." }}</p>
+                    <a href="{% url 'quiz' category.id %}" class="btn btn-primary">Start Quiz</a>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info text-center">
+        <p>Please <a href="{% url 'login' %}" class="alert-link">login</a> or <a href="{% url 'register' %}" class="alert-link">register</a> to access the quiz.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

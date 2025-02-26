@@ -1,0 +1,97 @@
+
+{% extends "base.html" %}
+
+
+{% block title %}Login - EduVibe{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card border-0 shadow-lg animate__animated animate__fadeIn">
+                <div class="card-body p-5">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bold mb-3">Welcome Back!</h2>
+                        <p class="text-muted">Sign in to continue your learning journey</p>
+                    </div>
+
+                    {% if loginError %}
+                    <div class="alert alert-danger animate__animated animate__shakeX">
+                        {{ loginError }}
+                    </div>
+                    {% endif %}
+
+                    <form method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <label for="username" class="form-label">Username</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <input type="text" name="username" id="username"
+                                    class="form-control form-control-lg"
+                                    placeholder="Enter your username" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="password" class="form-label">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input type="password" name="password" id="password"
+                                    class="form-control form-control-lg"
+                                    placeholder="Enter your password" required>
+                            </div>
+                        </div>
+
+                        <div class="d-grid mb-4">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-sign-in-alt me-2"></i>Login
+                            </button>
+                        </div>
+
+                        <div class="text-center">
+                            <p class="text-muted mb-0">Don't have an account?</p>
+                            <a href="{% url 'register' %}" class="fw-bold text-primary">Register here</a>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 1rem;
+    }
+
+    .input-group-text {
+        background-color: var(--light-bg);
+        border: none;
+    }
+
+    .form-control {
+        border-left: none;
+    }
+
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #dee2e6;
+    }
+
+    /* Add the following CSS to set the text color to white */
+.text-muted {
+    color: white !important; /* Sets the color of the muted text to white */
+}
+
+.fw-bold.text-primary {
+    color: #FF3B8B !important; /* Sets the color of the register link to white */
+}
+
+</style>
+{% endblock %}
